@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <form id="costForm">
+    <label for="attribute">Attribute:</label>
+    <input type="text" id="attribute" name="attribute" required>
+    <br>
+    <label for="cost">Cost / month ($):</label>
+    <input type="number" id="cost" name="cost" required>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.getElementById('costForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var formData = {
+        attribute: document.getElementById('attribute').value,
+        cost: document.getElementById('cost').value
+      };
+
+      google.script.run.processCostData(formData);
+      google.script.host.close();
+    });
+  </script>
+</body>
+</html>
